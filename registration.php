@@ -1,0 +1,60 @@
+<?php
+require_once("db.php");
+$conn = db_connect("localhost", "root", "root", "Credentials");
+//db_reset($conn, "reset_db.sql");
+session_start();
+?>
+<!doctype html>
+<html>
+<head>
+	<title>Register</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<form action="login.php" method="post">
+		<fieldset>
+			<legend>User Registration</legend>
+			<label for="firstname">First Name</label>
+			<input type="text" name="firstname" id="firstname" placeholder="Geoffroy" required="required">
+			<label for="lastname">Last Name</label>
+			<input type="text" name="lastname" id="lastname" placeholder="Dimur" required="required">
+			<br>
+			<label for="mail">Email Address</label>
+			<input type="email" name="mail" id="mail" placeholder="geoffroy.dimur@whatever.com" required="required">
+			<br>
+			<label for="password">Password</label>
+			<input type="password" name="password" id="password" required="required">
+			<br>
+			<label for="confirm_pass">Confirm Password</label>
+			<input type="password" name="confirm_password" id="confirm_password" required="required">
+			<br>
+			<input type="hidden" name="registered" id="registered">
+			<button type="submit" value="Submit">Register</button>
+			<button type="reset" value="reset">Reset</button>
+		</fieldset>		
+	</form>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script>
+		var password = document.getElementById("password")
+		var confirm_password = document.getElementById("confirm_password");
+
+		function validatePassword(){
+		  if(password.value != confirm_password.value) {
+		    confirm_password.setCustomValidity("Passwords Don't Match");
+		  } 
+		  else {
+		    confirm_password.setCustomValidity('');
+		  }
+		}
+		password.onchange = validatePassword;
+		confirm_password.onkeyup = validatePassword;
+	</script>
+	
+	<form action="login.php">
+		<button type="submit" value="Submit">Go to Login</button>
+	</form>
+	<h5>
+		Geoffroy DIMUR
+	</h5>
+</body>
+</html>
