@@ -1,9 +1,3 @@
-<?php
-require_once("db.php");
-$conn = db_connect("localhost", "root", "root", "Credentials");
-//db_reset($conn, "reset_db.sql");
-session_start();
-?>
 <!doctype html>
 <html>
 <head>
@@ -12,6 +6,7 @@ session_start();
 </head>
 <body>
 	<form action="login.php" method="post">
+		
 		<fieldset>
 			<legend>User Registration</legend>
 			<label for="firstname">First Name</label>
@@ -53,8 +48,6 @@ session_start();
 	<form action="login.php">
 		<button type="submit" value="Submit">Go to Login</button>
 	</form>
-	<h5>
-		Geoffroy DIMUR
-	</h5>
+
 </body>
 </html>
